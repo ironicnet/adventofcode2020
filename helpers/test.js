@@ -4,6 +4,18 @@ const assertEqual = (expected, value) => {
 	  throw new Error(`Expected ${expected}. Found ${value}.`);
   }
 };
+const assertCanFind = (expected, values) => {
+  const result = values.find(expected);
+  if (!result) {
+	  throw new Error(`Expected to find ${expected}. Array contains ${values}.`);
+  }
+};
+const assertIncludes = (expected, values) => {
+  const result = values.find(value => value === expected);
+  if (!result) {
+	  throw new Error(`Expected to find ${expected}. Array contains ${values}.`);
+  }
+};
 const assertAllEqual = (expected, value) => {
   if (expected.length !== value.length) {
     throw new Error(`Expected length ${expected.length}. Found ${value.length}.`);
@@ -28,4 +40,6 @@ module.exports = {
   it,
   assertEqual,
   assertAllEqual,
+  assertIncludes,
+  assertCanFind,
 }
